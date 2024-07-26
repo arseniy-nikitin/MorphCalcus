@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 
 import Screens
+import Components
 import Style
 
 Window {
@@ -11,33 +12,109 @@ Window {
     minimumHeight: 800
     title: "Morph"
 
-    StackView {
-        id: stackView
+    MSwipeWrapper {
         anchors.fill: parent
-        initialItem: MCalculatorScreen {}
-    }
+        property int currentIndex: 0
+        property var screens: [calculatorScreen, creditScreen, debitScreen]
 
-    Flickable {
-        anchors.fill: parent
-        interactive: true
-        flickableDirection: Flickable.HorizontalFlick
+        onSwipeRight: {
+            currentIndex = (currentIndex - 1 + screens.length) % screens.length
+            stackView.replace(screens[currentIndex])
+        }
 
-        onFlickStarted: {
-            if (horizontalVelocity > 0) {
-                // Swipe right
-                console.log("swipe right!")
-                stackView.pop()
-            } else if (horizontalVelocity < 0) {
-                // Swipe left
-                console.log("swipe left!")
-                if (stackView.depth === 0) {
-                    stackView.push(Qt.resolvedUrl("qrc:/arseniy.nikitin/imports/Screens/screens/MCreditScreen.qml"))
-                } else if (stackView.depth === 1) {
-                    stackView.push(Qt.resolvedUrl("qrc:/arseniy.nikitin/imports/Screens/screens/MDebitScreen.qml"))
-                } else {
-                    stackView.push(Qt.resolvedUrl("qrc:/arseniy.nikitin/imports/Screens/screens/MCalculatorScreen.qml"))
-                }
+        onSwipeLeft: {
+            currentIndex = (currentIndex + 1) % screens.length
+            stackView.replace(screens[currentIndex])
+        }
+
+        StackView {
+            id: stackView
+            anchors.fill: parent
+            replaceEnter: null
+            replaceExit: null
+            initialItem: calculatorScreen
+
+            Component {
+                id: calculatorScreen
+                MCalculatorScreen {}
+            }
+
+            Component {
+                id: creditScreen
+                MCreditScreen {}
+            }
+
+            Component {
+                id: debitScreen
+                MDebitScreen {}
             }
         }
     }
 }
+
+// StackView {
+//     id: stackView
+//     anchors.fill: parent
+
+//     // Define your pages here
+//     Component {
+//         id: page1
+//         Rectangle {
+//             color: "lightblue"
+//             width: parent.width
+//             height: parent.height
+//             Text {
+//                 text: "Page 1"
+//                 anchors.centerIn: parent
+//             }
+//         }
+//     }
+
+//     Component {
+//         id: page2
+//         Rectangle {
+//             color: "lightgreen"
+//             width: parent.width
+//             height: parent.height
+//             Text {
+//                 text: "Page 2"
+//                 anchors.centerIn: parent
+//             }
+//         }
+//     }
+
+//     Component {
+//         id: page3
+//         Rectangle {
+//             color: "lightyellow"
+//             width: parent.width
+//             height: parent.height
+//             Text {
+//                 text: "Page 3"
+//                 anchors.centerIn: parent
+//             }
+//         }
+//     }
+
+//     initialItem: page1
+// }
+
+// MSwipeWrapper {
+//     anchors.fill: parent
+
+//     onSwipeRight: {
+//         if (stackView.currentIndex > 0) {
+//             stackView.pop()
+//         } else {
+//             stackView.push(stackView.count - 1)
+//         }
+//     }
+
+//     onSwipeLeft: {
+//         if (stackView.currentIndex < stackView.count - 1) {
+//             stackView.push(stackView.currentIndex + 1)
+//         } else {
+//             stackView.push(0)
+//         }
+//     }
+// }

@@ -4,14 +4,6 @@ import Components
 import Style
 
 Item {
-    id: root
-
-    // MImageButton {
-    //     anchors.centerIn: root
-    //     image: MStyle.image.carretRightSvg
-    //     width: 60
-    //     height: 60
-    // }
 
     MTextButton {
         anchors.centerIn: parent
@@ -20,5 +12,11 @@ Item {
         width: 60
         height: 60
     }
-
 }
+
+// MImageButton {
+//     anchors.centerIn: root
+//     image: MStyle.image.carretRightSvg
+//     width: 60
+//     height: 60
+// }

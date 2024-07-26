@@ -15,7 +15,7 @@ list(APPEND MODULE_QML_FILES
     MTextButton.qml
     MImageButton.qml
     MTextWithSubtitleButton.qml
-    MFlickableWrapper.qml
+    MSwipeWrapper.qml
 )
 
 qt_add_qml_module(Components

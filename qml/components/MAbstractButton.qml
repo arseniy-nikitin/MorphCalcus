@@ -20,6 +20,12 @@ Item {
         shadowElevation: shadowDistance
     }
 
+    // TODO Fix bug:
+    //
+    // Releasing button when mouse
+    // out of button box cause
+    // infinit pressed animation
+
     MouseArea {
         id: mouseArea
         anchors.fill: root

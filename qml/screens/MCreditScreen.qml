@@ -4,6 +4,7 @@ import Components
 import Style
 
 Item {
+
     MTextButton {
         anchors.centerIn: parent
         text: "2"
@@ -11,5 +12,4 @@ Item {
         width: 60
         height: 60
     }
-
 }
