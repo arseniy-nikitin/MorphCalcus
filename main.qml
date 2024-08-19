@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-import Screens
+import Pages
 import Components
 import Style
 
@@ -10,21 +10,22 @@ Window {
     visible: true
     minimumWidth: 360
     minimumHeight: 800
+    color: "transparent"
     title: "Morph"
 
     MSwipeWrapper {
         anchors.fill: parent
         property int currentIndex: 0
-        property var screens: [calculatorScreen, creditScreen, debitScreen]
+        property var pages: [calculatorPage, creditPage, debitPage]
 
         onSwipeRight: {
-            currentIndex = (currentIndex - 1 + screens.length) % screens.length
-            stackView.replace(screens[currentIndex])
+            currentIndex = (currentIndex - 1 + pages.length) % pages.length
+            stackView.replace(pages[currentIndex])
         }
 
         onSwipeLeft: {
-            currentIndex = (currentIndex + 1) % screens.length
-            stackView.replace(screens[currentIndex])
+            currentIndex = (currentIndex + 1) % pages.length
+            stackView.replace(pages[currentIndex])
         }
 
         StackView {
@@ -32,89 +33,22 @@ Window {
             anchors.fill: parent
             replaceEnter: null
             replaceExit: null
-            initialItem: calculatorScreen
+            initialItem: calculatorPage
 
             Component {
-                id: calculatorScreen
-                MCalculatorScreen {}
+                id: calculatorPage
+                MCalculatorPage {}
             }
 
             Component {
-                id: creditScreen
-                MCreditScreen {}
+                id: creditPage
+                MCreditPage {}
             }
 
             Component {
-                id: debitScreen
-                MDebitScreen {}
+                id: debitPage
+                MDebitPage {}
             }
         }
     }
 }
-
-// StackView {
-//     id: stackView
-//     anchors.fill: parent
-
-//     // Define your pages here
-//     Component {
-//         id: page1
-//         Rectangle {
-//             color: "lightblue"
-//             width: parent.width
-//             height: parent.height
-//             Text {
-//                 text: "Page 1"
-//                 anchors.centerIn: parent
-//             }
-//         }
-//     }
-
-//     Component {
-//         id: page2
-//         Rectangle {
-//             color: "lightgreen"
-//             width: parent.width
-//             height: parent.height
-//             Text {
-//                 text: "Page 2"
-//                 anchors.centerIn: parent
-//             }
-//         }
-//     }
-
-//     Component {
-//         id: page3
-//         Rectangle {
-//             color: "lightyellow"
-//             width: parent.width
-//             height: parent.height
-//             Text {
-//                 text: "Page 3"
-//                 anchors.centerIn: parent
-//             }
-//         }
-//     }
-
-//     initialItem: page1
-// }
-
-// MSwipeWrapper {
-//     anchors.fill: parent
-
-//     onSwipeRight: {
-//         if (stackView.currentIndex > 0) {
-//             stackView.pop()
-//         } else {
-//             stackView.push(stackView.count - 1)
-//         }
-//     }
-
-//     onSwipeLeft: {
-//         if (stackView.currentIndex < stackView.count - 1) {
-//             stackView.push(stackView.currentIndex + 1)
-//         } else {
-//             stackView.push(0)
-//         }
-//     }
-// }

@@ -5,38 +5,35 @@ import Style
 
 Item {
     id: root
-    property var source: null
-    property real elevation: MStyle.shadow.distance
-    property color dropsOnColor: MStyle.color.primaryColor
-    property int samples: MStyle.shadow.samples
 
-    // Drop shadow
+    property var source: null
+    property real elevation: MStyle.shadow.elevation
+    property real lightOpacity: MStyle.shadow.onPrimaryLightOpacity
+    property real shadowOpacity: MStyle.shadow.onPrimaryShadowOpacity
+
+    // Shadow
     DropShadow {
-        id: dropShadow
+        id: shadow
         anchors.fill: root
         source: root.source
-        samples: root.samples
+        opacity: root.shadowOpacity
         horizontalOffset: MStyle.shadow.offset * root.elevation
         verticalOffset: MStyle.shadow.offset * root.elevation
         radius: MStyle.shadow.radius * root.elevation
-        color: MStyle.shadow.dropShadowColor
-        opacity: dropsOnColor === MStyle.color.primaryColor
-                 ? MStyle.shadow.onPrimaryDropShadowOpacity
-                 : MStyle.shadow.onAccentDropShadowOpacity
+        color: MStyle.shadow.shadowColor
+        samples: MStyle.shadow.samples
     }
 
-    // Back shadow
+    // Light
     DropShadow {
-        id: backShadow
+        id: light
         anchors.fill: root
         source: root.source
-        samples: root.samples
+        opacity: root.lightOpacity
         horizontalOffset: -MStyle.shadow.offset * root.elevation
         verticalOffset: -MStyle.shadow.offset * root.elevation
         radius: MStyle.shadow.radius * root.elevation
-        color: MStyle.shadow.backShadowColor
-        opacity: dropsOnColor === MStyle.color.primaryColor
-                 ? MStyle.shadow.onPrimaryBackShadowOpacity
-                 : MStyle.shadow.onAccentBackShadowOpacity
+        color: MStyle.shadow.lightColor
+        samples: MStyle.shadow.samples
     }
 }

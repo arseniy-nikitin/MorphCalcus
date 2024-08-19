@@ -10,13 +10,13 @@ int main(int argc, char *argv[])
 
     engine.load(QUrl(u"qrc:/arseniy.nikitin/imports/Morph/main.qml"_qs));
 
-    // QObject::connect(
-    //     &engine,
-    //     &QQmlApplicationEngine::objectCreationFailed,
-    //     &app,
-    //     []() { QCoreApplication::exit(-1); },
-    //     Qt::QueuedConnection);
-    // engine.loadFromModule("appMorphCalcus", "Morph");
-
     return app.exec();
 }
+
+// QObject::connect(
+//     &engine,
+//     &QQmlApplicationEngine::objectCreationFailed,
+//     &app,
+//     []() { QCoreApplication::exit(-1); },
+//     Qt::QueuedConnection);
+// engine.loadFromModule("appMorphCalcus", "Morph");

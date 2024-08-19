@@ -12,6 +12,11 @@ list(APPEND MODULE_RESOURCES
     images/CarretRight.svg
     images/RUB-Bold.svg
     images/RUB-ExtraBold.svg
+    images/BalanceRefreshFreqOnce.svg
+    images/BalanceRefreshFreqMonth.svg
+    images/BalanceRefreshFreqQuartal.svg
+    images/BalanceRefreshFreqHalf.svg
+    images/BalanceRefreshFreqYear.svg
 )
 
 set_source_files_properties(${MODULE_QML_FILES} PROPERTIES

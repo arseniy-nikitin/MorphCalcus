@@ -1,97 +1,78 @@
 import QtQuick
+import QtQuick.Layouts
 
 import Style
 
-Item {
+MConvexBodyWrapper {
     id: root
-    property color color: MStyle.color.primaryColor
-    property color laysOnColor: MStyle.color.primaryColor
-    property real shadowDistance: MStyle.shadow.distance
-    property string shortPress: ""
-    property string longPress: ""
 
-    signal onInputPressed(string signal)
+    // Shadow properties
+    property real shadowElevation: MStyle.shadow.elevation
+    property real lightOpacity: MStyle.shadow.onPrimaryLightOpacity
+    property real shadowOpacity: MStyle.shadow.onPrimaryShadowOpacity
 
-    MConvexArea {
-        id: convexArea
-        anchors.fill: root
-        color: root.color
-        laysOnColor: root.laysOnColor
-        shadowElevation: shadowDistance
+    // Body properties
+    // property color color: MStyle.color.primaryColor
+    // property int radius: MStyle.button.radius
+
+    // Image properties
+    property string imageSource: ""
+
+    // Title properties
+    property string titleText: ""
+    property color titleFontColor: MStyle.color.accentColor
+    property int titlePixelSize: MStyle.size.largeTitle
+
+    // Subtitle properties
+    property string subtitleText: ""
+    property color subtitleFontColor: MStyle.color.accentColor
+    property int subtitlePixelSize: MStyle.size.subtitle
+
+
+    signal clicked()
+    signal pressAndHold()
+
+    ColumnLayout {
+        anchors.centerIn: root
+        spacing: 0
+
+        MAlignedImage {
+            id: image
+            source: root.imageSource
+        }
+
+        MAlignedText {
+            id: title
+            text: root.titleText
+            color: root.titleFontColor
+            fontFamily: MStyle.font.nunitoBold
+            pixelSize: root.titlePixelSize
+        }
+
+        MAlignedText {
+            id: subtitle
+            text: root.subtitleText
+            color: root.subtitleFontColor
+            fontFamily: MStyle.font.nunitoBold
+            pixelSize: root.subtitlePixelSize
+        }
     }
-
-    // TODO Fix bug:
-    //
-    // Releasing button when mouse
-    // out of button box cause
-    // infinit pressed animation
 
     MouseArea {
         id: mouseArea
         anchors.fill: root
-        property bool held: false
-        onPressed: {
-            // Animations
-            held = true
-            if (!onPressAnimation.running && !onReleaseAnimation.running) {
-                onPressAnimation.start()
-            }
-            // Signals
-            timerLongSignal.running = true
-        }
-        onReleased: {
-            // Animations
-            held = false
-            if (!onPressAnimation.running && !onReleaseAnimation.running) {
-                onReleaseAnimation.start()
-            }
-            // Signals
-            if (timerLongSignal.running) {
-                timerLongSignal.stop()
-                if (root.shortPress !== "") {
-                    console.log("onInputPressed short signal:", shortPress)
-                    root.onInputPressed(shortPress)
-                }
-            }
-        }
-    }
+        pressAndHoldInterval: 250
 
-    // Animations
-    NumberAnimation {
-        id: onPressAnimation
-        target: convexArea
-        property: "shadowElevation"
-        to: shadowDistance * MStyle.animation.pressDepth
-        duration: MStyle.animation.msOnPress
-        easing.type: Easing.OutQuad
-        running: false
-        onStopped: {
-            if (!mouseArea.held) {
-                onReleaseAnimation.start()
-            }
+        MButtonSignalsHandler {
+            signalSender: mouseArea
+            onClicked: { root.clicked() }
+            onPressAndHold: { root.pressAndHold() }
         }
-    }
 
-    NumberAnimation {
-        id: onReleaseAnimation
-        target: convexArea
-        property: "shadowElevation"
-        to: shadowDistance
-        duration: MStyle.animation.msOnRelease
-        easing.type: Easing.InQuad
-    }
-
-    // Signals
-    Timer {
-        id: timerLongSignal
-        interval: 250 // TODO: REMOVE MAGIC NUMBER
-        running: false
-        repeat: false
-        onTriggered: {
-            if (root.longPress !== "") {
-                console.log("onInputPressed long signal:", longPress)
-                root.onInputPressed(longPress)
-            }
+        MButtonAnimationHandler {
+            signalSender: mouseArea
+            target: root
+            property: "elevation"
         }
     }
 }

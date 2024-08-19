@@ -21,11 +21,11 @@ qt_add_qml_module(appMorphCalcus
 )
 
 add_subdirectory(qml/components)
-add_subdirectory(qml/screens)
+add_subdirectory(qml/pages)
 # add_subdirectory(models)
 add_subdirectory(resources)
 
-target_link_libraries(appMorphCalcus PRIVATE Qt6::Quick Componentsplugin Screensplugin Styleplugin)
+target_link_libraries(appMorphCalcus PRIVATE Qt6::Quick Componentsplugin Pagesplugin Styleplugin)
 
 set_target_properties(appMorphCalcus PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER arseniy.nikitin.morphcalcus.com

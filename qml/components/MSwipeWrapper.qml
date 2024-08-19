@@ -1,22 +1,27 @@
 import QtQuick
 
 MouseArea {
+    id: root
+
     property real startX: 0
+
+    signal swipeRight()
+    signal swipeLeft()
 
     onPressed: {
         startX = mouseX
     }
 
     onReleased: {
-        if (Math.abs(mouseX - startX) > 100) {
-            if (mouseX - startX > 0) {
-                swipeRight()
+        // TODO: Remove Magic Number "100"
+        if (Math.abs(mouseX - root.startX) > 100) {
+            if (mouseX - root.startX > 0) {
+                console.log("Swipe Right")
+                root.swipeRight()
             } else {
-                swipeLeft()
+                console.log("Swipe Left")
+                root.swipeLeft()
             }
         }
     }
-
-    signal swipeRight()
-    signal swipeLeft()
 }

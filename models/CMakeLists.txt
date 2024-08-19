@@ -8,6 +8,8 @@ qt_add_qml_module(Models
     VERSION 1.0
     RESOURCE_PREFIX /arseniy.nikitin/imports
     SOURCES
-        calculatormodel.h calculatormodel.cpp
-
+        calculatorfacade.hh calculatorfacade.cc
+        calculatormodel.hh calculatormodel.cc
+        creditmodel.hh creditmodel.cc
+        debitmodel.hh debitmodel.cc
 )
