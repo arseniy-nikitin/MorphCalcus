@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.5 COMPONENTS Quick REQUIRED)
 
 qt_add_executable(appMorphCalcus
-    main.cpp
+    main.cc
 )
 
 qt_add_qml_module(appMorphCalcus
@@ -22,7 +22,7 @@ qt_add_qml_module(appMorphCalcus
 
 add_subdirectory(qml/components)
 add_subdirectory(qml/pages)
-# add_subdirectory(models)
+add_subdirectory(models)
 add_subdirectory(resources)
 
 target_link_libraries(appMorphCalcus PRIVATE Qt6::Quick Componentsplugin Pagesplugin Styleplugin)

@@ -12,4 +12,9 @@ qt_add_qml_module(Models
         calculatormodel.hh calculatormodel.cc
         creditmodel.hh creditmodel.cc
         debitmodel.hh debitmodel.cc
+        transactionmodel.hh transactionmodel.cc
+        
+        SOURCES creditfacade.hh creditfacade.cc
+
+
 )

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <QString>
 
 class CreditModel : public QObject
 {
@@ -17,35 +16,34 @@ public:
     explicit CreditModel(QObject *parent = nullptr);
 
     // Inputs
-    const QString& amount() const { return m_amount; }
-    const QString& interestRate() const { return m_interestRate; }
-    const QString& periodInMonth() const { return m_periodInMonth; }
-    CreditType type() const { return m_type; }
-
-    void setAmount(const QString& amount);
-    void setInterestRate(const QString& interestRate);
-    void setPeriodInMonth(const QString& periodInMonth);
+    void setAmount(const qreal amount);
+    void setInterestRate(const qreal interestRate);
+    void setPeriodInMonth(const qreal periodInMonth);
     void setType(CreditType type);
 
-    // Outputs
-    const QString& firstPayment() const { return m_firstPayment; }
-    const QString& lastPayment() const { return m_lastPayment; }
-    const QString& overpayment() const { return m_overpayment; }
-    const QString& totalPayment() const { return m_totalPayment; }
+    qreal amount() const { return m_amount; }
+    qreal interestRate() const { return m_interestRate; }
+    qreal periodInMonth() const { return m_periodInMonth; }
+    CreditType type() const { return m_type; }
 
-public slots:
-    void updateOutputs();
+    // Outputs
+    void calculateOutputs();
+
+    qreal firstPayment() const { return m_firstPayment; }
+    qreal lastPayment() const { return m_lastPayment; }
+    qreal overpayment() const { return m_overpayment; }
+    qreal totalPayment() const { return m_totalPayment; }
 
 private:
     // Inputs
-    QString m_amount;
-    QString m_interestRate;
-    QString m_periodInMonth;
+    qreal m_amount;
+    qreal m_interestRate;
+    qreal m_periodInMonth;
     CreditType m_type;
 
     // Outputs
-    QString m_firstPayment;
-    QString m_lastPayment;
-    QString m_overpayment;
-    QString m_totalPayment;
+    qreal m_firstPayment;
+    qreal m_lastPayment;
+    qreal m_overpayment;
+    qreal m_totalPayment;
 };

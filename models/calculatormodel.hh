@@ -11,12 +11,12 @@ public:
     explicit CalculatorModel(QObject *parent = nullptr);
 
     // Inputs
-    const QString& equation() const { return equation; }
     void setEquation(const QString& equation);
+    const QString& equation() const { return equation; }
 
     // Outputs
-    const QString& result() const { return result; }
     void setResult(const QString& result);
+    const QString& result() const { return result; }
 
 private:
     // Inputs
