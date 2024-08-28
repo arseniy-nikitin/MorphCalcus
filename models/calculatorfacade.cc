@@ -1,5 +1,5 @@
 #include "calculatorfacade.hh"
 
-CalculatorFacade::CalculatorFacade(QObject *parent)
+calculatorfacade::calculatorfacade(QObject *parent)
     : QObject{parent}
 {}

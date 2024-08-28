@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <qreal>
 #include <QDate>
 #include <QList>
 
@@ -28,21 +27,21 @@ public:
     explicit DebitModel(QObject *parent = nullptr);
 
     // Inputs
-    void setDebitAmount(const qreal debitAmount);
-    void setDebitInterestRate(const qreal debitInterestRate);
+    void setAmount(const qreal debitAmount);
+    void setInterestRate(const qreal debitInterestRate);
     void setTaxRate(const qreal taxRate);
     void setStartDate(const QDate startDate);
     void setPeriodInMonth(const qreal periodInMonth);
-    void setDebitType(DebitType debitType);
-    void setBalanceRefreshRate(RefreshRate balanceRefreshRate);
+    void setType(DebitType type);
+    void setRefreshRate(RefreshRate refreshRate);
 
     qreal debitAmount() const { return m_debitAmount; }
     qreal debitInterestRate() const { return m_debitInterestRate; }
     qreal taxRate() const { return m_taxRate; }
     QDate startDate() const { return m_startDate; }
     qreal periodInMonth() const { return m_periodInMonth; }
-    DebitType debitType() const { return m_debitType; }
-    RefreshRate balanceRefreshRate() const { return m_balanceRefreshRate; }
+    DebitType type() const { return m_type; }
+    RefreshRate refreshRate() const { return m_refreshRate; }
 
     // QList transactionsList() const { return m_transactions; }
     // void setTransactions(QList transactions);
@@ -66,8 +65,8 @@ private:
     qreal m_taxRate;
     QDate m_startDate;
     qreal m_periodInMonth;
-    DebitType m_debitType;
-    RefreshRate m_balanceRefreshRate;
+    DebitType m_type;
+    RefreshRate m_refreshRate;
     // QList transactionsList;
 
     // Outputs
