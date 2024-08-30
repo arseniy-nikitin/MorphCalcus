@@ -2,6 +2,8 @@
 
 #include <QObject>
 
+namespace Morph {
+
 class CreditModel : public QObject
 {
     Q_OBJECT
@@ -16,23 +18,24 @@ public:
     explicit CreditModel(QObject *parent = nullptr);
 
     // Inputs
-    void setAmount(const qreal amount);
-    void setInterestRate(const qreal interestRate);
-    void setPeriodInMonth(const qreal periodInMonth);
-    void setType(CreditType type);
-
     qreal amount() const { return m_amount; }
     qreal interestRate() const { return m_interestRate; }
     qreal periodInMonth() const { return m_periodInMonth; }
     CreditType type() const { return m_type; }
 
-    // Outputs
-    void calculateOutputs();
+    void setAmount(const qreal amount) { m_amount = amount; }
+    void setInterestRate(const qreal interestRate) { m_interestRate = interestRate; }
+    void setPeriodInMonth(const qreal periodInMonth) { m_periodInMonth = periodInMonth; }
+    void setType(CreditType type) { m_type = type; }
 
+    // Outputs
     qreal firstPayment() const { return m_firstPayment; }
     qreal lastPayment() const { return m_lastPayment; }
     qreal overpayment() const { return m_overpayment; }
     qreal totalPayment() const { return m_totalPayment; }
+
+    void calculateDifferentiated();
+    void calculateAnnuity();
 
 private:
     // Inputs
@@ -47,3 +50,5 @@ private:
     qreal m_overpayment;
     qreal m_totalPayment;
 };
+
+} // namespace Morph

@@ -4,15 +4,10 @@
 
 #include "debitmodel.hh"
 
+namespace Morph {
+
 using DebitModel::DebitType;
-using DebitModel::DebitType::Capitalization;
-using DebitModel::DebitType::Payment;
 using DebitModel::RefreshRate;
-using DebitModel::RefreshRate::Once;
-using DebitModel::RefreshRate::Month;
-using DebitModel::RefreshRate::Quartal;
-using DebitModel::RefreshRate::Half;
-using DebitModel::RefreshRate::Year;
 
 class DebitFacade : public QObject
 {
@@ -72,15 +67,17 @@ public:
         }
     }
 
-    // Hz che s etim delat'
-    void updateStartDate(const QDate input);
+    // dd.mm.yyyy
+    // void updateStartDate(const QString input) {
+    //     updateDate(input);
+    // }
 
     void updatePeriodInMonth(const QString input) {
         QString actualPeriodInMonth {QString.number(m_debitModel->periodInMonth())};
         QString newPeriodInMonth {actualPeriodInMonth + input};
         if (newPeriodInMonth.length() <= 4) {
             bool ok {true};
-            qreal value {newPeriodInMonth.toDouble(&ok)};
+            quint32 value {newPeriodInMonth.toInt(&ok)};
             // POTENTIALLY CAN BROKE EVERYTHING !!!
             // Process wrong inputs such as multiple dots
             // checking dots manually can be better solution
@@ -94,26 +91,26 @@ public:
 
     void changeType() {
         DebitType actualType {m_debitModel->type()};
-        if (actualType == Capitalization) {
-            m_debitModel->setType(Payment);
-        } else if (actualType == Payment) {
-            m_debitModel->setType(Capitalization);
+        if (actualType == DebitType::Capitalization) {
+            m_debitModel->setType(DebitType::Payment);
+        } else if (actualType == DebitType::Payment) {
+            m_debitModel->setType(DebitType::Capitalization);
         }
         // emit typeChanged;
     }
 
     void changeRefreshRate() {
         RefreshRate actualRefreshRate {m_debitModel->refreshRate()};
-        if (actualRefreshRate == Once) {
-            m_debitModel->setType(Month);
-        } else if (actualRefreshRate == Month) {
-            m_debitModel->setType(Quartal);
-        } else if (actualRefreshRate == Quartal) {
-            m_debitModel->setType(Half);
-        } else if (actualRefreshRate == Half) {
-            m_debitModel->setType(Year);
-        } else if (actualRefreshRate == Year) {
-            m_debitModel->setType(Once);
+        if (actualRefreshRate == RefreshRate::Once) {
+            m_debitModel->setType(RefreshRate::Month);
+        } else if (actualRefreshRate == RefreshRate::Month) {
+            m_debitModel->setType(RefreshRate::Quartal);
+        } else if (actualRefreshRate == RefreshRate::Quartal) {
+            m_debitModel->setType(RefreshRate::Half);
+        } else if (actualRefreshRate == RefreshRate::Half) {
+            m_debitModel->setType(RefreshRate::Year);
+        } else if (actualRefreshRate == RefreshRate::Year) {
+            m_debitModel->setType(RefreshRate::Once);
         }
         // emit typeChanged;
     }
@@ -129,14 +126,14 @@ public:
     QString amount() const { return  QString.number(m_debitModel->amount()); }
     QString interestRate() const { return  QString.number(m_debitModel->interestRate()); }
     QString taxRate() const { return  QString.number(m_debitModel->taxRate()); }
-    QString startDate() const { return m_startDate.toString("dd/MM/yyyy"); }
+    // QString startDate() const { return m_startDate.toString("dd/MM/yyyy"); }
     QString periodInMonth() const { return  QString.number(m_debitModel->periodInMonth()); }
     QString type() const {
         DebitType actualType {m_debitModel->type()};
         QString output {};
-        if (actualType == Capitalization) {
+        if (actualType == DebitType::Capitalization) {
             output {"Capitalization"};
-        } else if (actualType == Payment) {
+        } else if (actualType == DebitType::Payment) {
             output {"Payment"};
         }
         return output;
@@ -144,15 +141,15 @@ public:
     QString refreshRate() const {
         RefreshRate actualRefreshRate {m_debitModel->refreshRate()};
         QString output {};
-        if (actualRefreshRate == Once) {
+        if (actualRefreshRate == RefreshRate::Once) {
             output {"Once"};
-        } else if (actualRefreshRate == Month) {
+        } else if (actualRefreshRate == RefreshRate::Month) {
             output {"Month"};
-        } else if (actualRefreshRate == Quartal) {
+        } else if (actualRefreshRate == RefreshRate::Quartal) {
             output {"Quartal"};
-        } else if (actualRefreshRate == Half) {
+        } else if (actualRefreshRate == RefreshRate::Half) {
             output {"Half"};
-        } else if (actualRefreshRate == Year) {
+        } else if (actualRefreshRate == RefreshRate::Year) {
             output {"Year"};
         }
         return output;
@@ -196,3 +193,5 @@ private slots:
 private:
     DebitModel *m_debitModel;
 };
+
+} // namespace Morph

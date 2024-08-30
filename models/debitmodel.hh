@@ -47,16 +47,12 @@ public:
     // void setTransactions(QList transactions);
 
     // Outputs
-    void setTotalInterest(const qreal totalInterest);
-    void setTotalTax(const qreal totalTax);
-    void setTotalBalance(const qreal totalBalance);
+    void calculateWithCapitalization();
+    void calculateWithPayment();
 
     qreal totalInterest() const { return m_totalInterest; }
     qreal totalTax() const { return m_totalTax; }
     qreal totalBalance() const { return m_totalBalance; }
-
-public slots:
-    void debitDataChanged();
 
 private:
     // Inputs
