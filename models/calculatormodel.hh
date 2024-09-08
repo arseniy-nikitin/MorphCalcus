@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QString>
 
+namespace Morph {
+
 class CalculatorModel : public QObject
 {
     Q_OBJECT
@@ -10,18 +12,16 @@ class CalculatorModel : public QObject
 public:
     explicit CalculatorModel(QObject *parent = nullptr);
 
-    // Inputs
-    void setEquation(const QString& equation);
-    const QString& equation() const { return equation; }
+    const QString& equation() const { return m_equation; }
+    void setEquation(const QString& equation) { m_equation = equation; }
 
-    // Outputs
-    void setResult(const QString& result);
-    const QString& result() const { return result; }
+    const QString& result() const { return m_result; }
+    void calculateResult();
 
 private:
-    // Inputs
-    QString equation;
+    QString m_equation;
 
-    // Outputs
-    QString result;
+    QString m_result;
 };
+
+} // namespace Morph

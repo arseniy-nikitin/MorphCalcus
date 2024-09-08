@@ -4,6 +4,8 @@
 #include <QDate>
 #include <QList>
 
+namespace Morph {
+
 class DebitModel : public QObject
 {
     Q_OBJECT
@@ -26,38 +28,33 @@ public:
 
     explicit DebitModel(QObject *parent = nullptr);
 
-    // Inputs
-    void setAmount(const qreal debitAmount);
-    void setInterestRate(const qreal debitInterestRate);
-    void setTaxRate(const qreal taxRate);
-    void setStartDate(const QDate startDate);
-    void setPeriodInMonth(const qreal periodInMonth);
-    void setType(DebitType type);
-    void setRefreshRate(RefreshRate refreshRate);
-
-    qreal debitAmount() const { return m_debitAmount; }
-    qreal debitInterestRate() const { return m_debitInterestRate; }
+    qreal amount() const { return m_amount; }
+    qreal interestRate() const { return m_interestRate; }
     qreal taxRate() const { return m_taxRate; }
     QDate startDate() const { return m_startDate; }
     qreal periodInMonth() const { return m_periodInMonth; }
     DebitType type() const { return m_type; }
     RefreshRate refreshRate() const { return m_refreshRate; }
-
     // QList transactionsList() const { return m_transactions; }
-    // void setTransactions(QList transactions);
+    void setAmount(const qreal amount);
+    void setInterestRate(const qreal interestRate);
+    void setTaxRate(const qreal taxRate);
+    void setStartDate(const QDate startDate);
+    void setPeriodInMonth(const qreal periodInMonth);
+    void setType(DebitType type);
+    void setRefreshRate(RefreshRate refreshRate);
+    // void setTransactionList(QList transactions);
 
-    // Outputs
     void calculateWithCapitalization();
     void calculateWithPayment();
-
     qreal totalInterest() const { return m_totalInterest; }
     qreal totalTax() const { return m_totalTax; }
     qreal totalBalance() const { return m_totalBalance; }
 
 private:
     // Inputs
-    qreal m_debitAmount;
-    qreal m_debitInterestRate;
+    qreal m_amount;
+    qreal m_interestRate;
     qreal m_taxRate;
     QDate m_startDate;
     qreal m_periodInMonth;
@@ -70,3 +67,5 @@ private:
     qreal m_totalTax;
     qreal m_totalBalance;
 };
+
+} // namespace Morph

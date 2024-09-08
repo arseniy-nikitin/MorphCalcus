@@ -2,6 +2,8 @@
 
 #include <QObject>
 
+namespace Morph {
+
 class calculatorfacade : public QObject
 {
     Q_OBJECT
@@ -10,3 +12,5 @@ public:
 
 signals:
 };
+
+} // namespace Morph

@@ -73,7 +73,7 @@ void CreditFacade::updatePeriodInMonth(const QString input) {
     QString newPeriodInMonth {actualPeriodInMonth + input};
     if (newPeriodInMonth.length() <= 4) {
         bool ok {true};
-        quint32 value {newPeriodInMonth.toInt(&ok)};
+        qint32 value {newPeriodInMonth.toInt(&ok)};
         // POTENTIALLY CAN BROKE EVERYTHING !!!
         // Process wrong inputs such as multiple dots
         // checking dots manually can be better solution
@@ -128,7 +128,7 @@ QString CreditFacade::totalPayment() const {
 }
 
 void CreditFacade::updateOutputs() {
-    m_creditModel->calculateOutputs();
+    //m_creditModel->calculateOutputs();
     emit outputsChanged();
 }
 

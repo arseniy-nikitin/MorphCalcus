@@ -4,10 +4,35 @@ project(MorphCalcus VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
+set(CMAKE_C_COMPILER "clang")
+set(CMAKE_CXX_COMPILER "clang++")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.5 COMPONENTS Quick REQUIRED)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+option(TESTING_ENABLE ON)
+option(COVERAGE_ENABLE OFF)
+option(SANITIZER_ENABLE OFF)
+
+if(TESTING_ENABLE)
+    set(gtest_force_shared_crt ON CACHE BOOL FORCE)
+    add_subdirectory(external/googletest)
+    add_subdirectory(tests)
+    enable_testing()
+endif()
+
+if(COVERAGE_ENABLE)
+    string(CONCAT COVERAGE_COMPILE_OPTIONS "-fprofile-arcs -ftest-coverage -fno-inline --coverage")
+    string(CONCAT COVERAGE_LINKING_OPTIONS "-lgcov --coverage")
+endif()
+
+if(SANITIZER_ENABLE)
+    string(CONCAT SANITIZER_OPTIONS "-fsanitize=address,undefined,shift,integer-divide-by-zero,"
+                                    "float-divide-by-zero,unreachable,vla-bound,null,return,leak,"
+                                    "bounds,float-cast-overflow,enum")
+endif()
 
 qt_add_executable(appMorphCalcus
     main.cc

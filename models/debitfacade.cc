@@ -1,5 +1,9 @@
 #include "debitfacade.hh"
 
-DebitFacade::DebitFacade(QObject *parent)
-    : QObject{parent}
-{}
+namespace Morph {
+
+// DebitFacade::DebitFacade(QObject *parent)
+//     : QObject{parent}
+// {}
+
+} // namespace Morph

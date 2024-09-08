@@ -6,11 +6,11 @@
 
 namespace Morph {
 
-using CreditModel::CreditType;
-
 class CreditFacade : public QObject
 {
     Q_OBJECT
+
+    using CreditType = CreditModel::CreditType;
 
 signals:
     void amountChanged();
@@ -26,7 +26,6 @@ public:
     QString interestRate() const;
     QString periodInMonth() const;
     QString type() const;
-
     void updateAmount(const QString input);
     void updateInterestRate(const QString input);
     void updatePeriodInMonth(const QString input);
