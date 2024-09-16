@@ -46,12 +46,12 @@ Item {
         // Loaders
         FontLoader {
             id: nunitoBoldLoader
-            source: "qrc:/arseniy.nikitin/imports/Style/fonts/Nunito-Bold.ttf"
+            source: "qrc:/arseniy.nikitin/imports/Resources/fonts/Nunito-Bold.ttf"
         }
 
         FontLoader {
             id: nunitoExtraBoldLoader
-            source: "qrc:/arseniy.nikitin/imports/Style/fonts/Nunito-ExtraBold.ttf"
+            source: "qrc:/arseniy.nikitin/imports/Resources/fonts/Nunito-ExtraBold.ttf"
         }
     }
 
@@ -61,15 +61,15 @@ Item {
         id: image_
 
         // svg
-        readonly property string backspaceSvg: "qrc:/arseniy.nikitin/imports/Style/images/Backspace.svg"
-        readonly property string carretRightSvg: "qrc:/arseniy.nikitin/imports/Style/images/CarretRight.svg"
-        readonly property string rubBoldSvg: "qrc:/arseniy.nikitin/imports/Style/images/RUB-Bold.svg"
-        readonly property string rubExtraBoldSvg: "qrc:/arseniy.nikitin/imports/Style/images/RUB-ExtraBold.svg"
-        readonly property string balanceRefreshFreqOnceSvg: "qrc:/arseniy.nikitin/imports/Style/images/BalanceRefreshFreqOnce.svg"
-        readonly property string balanceRefreshFreqMonthSvg: "qrc:/arseniy.nikitin/imports/Style/images/BalanceRefreshFreqMonth.svg"
-        readonly property string balanceRefreshFreqQuartalSvg: "qrc:/arseniy.nikitin/imports/Style/images/BalanceRefreshFreqQuartal.svg"
-        readonly property string balanceRefreshFreqHalfSvg: "qrc:/arseniy.nikitin/imports/Style/images/BalanceRefreshFreqHalf.svg"
-        readonly property string balanceRefreshFreqYearSvg: "qrc:/arseniy.nikitin/imports/Style/images/BalanceRefreshFreqYear.svg"
+        readonly property string backspaceSvg: "qrc:/arseniy.nikitin/imports/Resources/images/Backspace.svg"
+        readonly property string carretRightSvg: "qrc:/arseniy.nikitin/imports/Resources/images/CarretRight.svg"
+        readonly property string rubBoldSvg: "qrc:/arseniy.nikitin/imports/Resources/images/RUB-Bold.svg"
+        readonly property string rubExtraBoldSvg: "qrc:/arseniy.nikitin/imports/Resources/images/RUB-ExtraBold.svg"
+        readonly property string balanceRefreshFreqOnceSvg: "qrc:/arseniy.nikitin/imports/Resources/images/BalanceRefreshFreqOnce.svg"
+        readonly property string balanceRefreshFreqMonthSvg: "qrc:/arseniy.nikitin/imports/Resources/images/BalanceRefreshFreqMonth.svg"
+        readonly property string balanceRefreshFreqQuartalSvg: "qrc:/arseniy.nikitin/imports/Resources/images/BalanceRefreshFreqQuartal.svg"
+        readonly property string balanceRefreshFreqHalfSvg: "qrc:/arseniy.nikitin/imports/Resources/images/BalanceRefreshFreqHalf.svg"
+        readonly property string balanceRefreshFreqYearSvg: "qrc:/arseniy.nikitin/imports/Resources/images/BalanceRefreshFreqYear.svg"
     }
 
     // Global shadows properties

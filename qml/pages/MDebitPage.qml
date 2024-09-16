@@ -1,12 +1,12 @@
 import QtQuick
 import QtQuick.Layouts
 
-import Components
-import Style
+import Morph.Style
+import Morph.Components
 
 Rectangle {
     id: root
-    color: MStyle.color.primaryColor
+    color: Style.color.primaryColor
     radius: 12
 
     // Make wrapper from container and layout
@@ -33,7 +33,7 @@ Rectangle {
                     Layout.fillWidth: true
                     height: 48
                     text: "1000000"
-                    imageSource: MStyle.image.rubBoldSvg
+                    imageSource: Style.image.rubBoldSvg
                 }
 
                 RowLayout {
@@ -84,13 +84,13 @@ Rectangle {
                         Layout.fillWidth: true
                         height: 48
                         titleText: "Capitalization"
-                        titlePixelSize: MStyle.size.mediumTitle
+                        titlePixelSize: Style.size.mediumTitle
                     }
 
                     MAbstractButton {
                         width: 48
                         height: 48
-                        imageSource: MStyle.image.balanceRefreshFreqMonthSvg
+                        imageSource: Style.image.balanceRefreshFreqMonthSvg
                     }
                 }
             }

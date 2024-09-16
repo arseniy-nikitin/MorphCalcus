@@ -6,17 +6,15 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
-    engine.addImportPath(":/arseniy.nikitin/imports");
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
 
-    engine.load(QUrl(u"qrc:/arseniy.nikitin/imports/Morph/main.qml"_qs));
+    engine.addImportPath(":/arseniy.nikitin/imports");
+    engine.load(QUrl(u"qrc:/arseniy.nikitin/imports/Morph/qml/main.qml"_qs));
 
     return app.exec();
 }
-
-// QObject::connect(
-//     &engine,
-//     &QQmlApplicationEngine::objectCreationFailed,
-//     &app,
-//     []() { QCoreApplication::exit(-1); },
-//     Qt::QueuedConnection);
-// engine.loadFromModule("appMorphCalcus", "Morph");

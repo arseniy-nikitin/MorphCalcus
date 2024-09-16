@@ -1,32 +1,33 @@
 import QtQuick
 import QtQuick.Layouts
 
-import Style
+import Morph.Style
+import Morph.Components
 
 MConvexBodyWrapper {
     id: root
 
     // Shadow properties
-    property real shadowElevation: MStyle.shadow.elevation
-    property real lightOpacity: MStyle.shadow.onPrimaryLightOpacity
-    property real shadowOpacity: MStyle.shadow.onPrimaryShadowOpacity
+    property real shadowElevation: Style.shadow.elevation
+    property real lightOpacity: Style.shadow.onPrimaryLightOpacity
+    property real shadowOpacity: Style.shadow.onPrimaryShadowOpacity
 
     // Body properties
-    // property color color: MStyle.color.primaryColor
-    // property int radius: MStyle.button.radius
+    // property color color: Style.color.primaryColor
+    // property int radius: Style.button.radius
 
     // Image properties
     property string imageSource: ""
 
     // Title properties
     property string titleText: ""
-    property color titleFontColor: MStyle.color.accentColor
-    property int titlePixelSize: MStyle.size.largeTitle
+    property color titleFontColor: Style.color.accentColor
+    property int titlePixelSize: Style.size.largeTitle
 
     // Subtitle properties
     property string subtitleText: ""
-    property color subtitleFontColor: MStyle.color.accentColor
-    property int subtitlePixelSize: MStyle.size.subtitle
+    property color subtitleFontColor: Style.color.accentColor
+    property int subtitlePixelSize: Style.size.subtitle
 
 
     signal clicked()
@@ -45,7 +46,7 @@ MConvexBodyWrapper {
             id: title
             text: root.titleText
             color: root.titleFontColor
-            fontFamily: MStyle.font.nunitoBold
+            fontFamily: Style.font.nunitoBold
             pixelSize: root.titlePixelSize
         }
 
@@ -53,7 +54,7 @@ MConvexBodyWrapper {
             id: subtitle
             text: root.subtitleText
             color: root.subtitleFontColor
-            fontFamily: MStyle.font.nunitoBold
+            fontFamily: Style.font.nunitoBold
             pixelSize: root.subtitlePixelSize
         }
     }

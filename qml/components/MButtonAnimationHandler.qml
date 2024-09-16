@@ -1,6 +1,6 @@
 import QtQuick
 
-import Style
+import Morph.Style
 
 Item {
     id: root
@@ -37,8 +37,8 @@ Item {
         id: onPressAnimation
         target: root.target
         property: root.property
-        to: MStyle.button.animation.pressElevation
-        duration: MStyle.button.animation.msOnPress
+        to: Style.button.animation.pressElevation
+        duration: Style.button.animation.msOnPress
         easing.type: Easing.OutQuad
         onStopped: {
             if (!state.held_) {
@@ -51,8 +51,8 @@ Item {
         id: onReleaseAnimation
         target: root.target
         property: root.property
-        to: MStyle.button.animation.releaseElevation
-        duration: MStyle.button.animation.msOnRelease
+        to: Style.button.animation.releaseElevation
+        duration: Style.button.animation.msOnRelease
         easing.type: Easing.InQuad
     }
 }

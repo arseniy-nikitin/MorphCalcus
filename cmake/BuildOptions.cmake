@@ -1,0 +1,51 @@
+set(DEBUG_COMPILE_OPTIONS
+    "-O1"
+    "-g"
+)
+set(RELEASE_COMPILE_OPTIONS
+    "-O3"
+)
+set(WARNING_OPTIONS
+    "-Wall"
+    "-Wextra"
+    "-Wshadow"
+    "-Wnon-virtual-dtor"
+    "-Wold-style-cast"
+    "-Wcast-align"
+    "-Wunused"
+    "-Woverloaded-virtual"
+    "-Wpedantic"
+    "-Wmissing-include-dirs"
+    "-Wnull-dereference"
+    "-Wformat=2"
+    "-Wcast-qual"
+    "-Winit-self"
+    "-Wswitch-enum"
+    "-Wunreachable-code"
+    "-Wredundant-decls"
+)
+set(SANITIZER_OPTIONS
+    "-fsanitize=address"
+    "-fsanitize=undefined"
+    "-fsanitize=shift"
+    "-fsanitize=integer-divide-by-zero"
+    "-fsanitize=float-divide-by-zero"
+    "-fsanitize=unreachable"
+    "-fsanitize=vla-bound"
+    "-fsanitize=null"
+    "-fsanitize=return"
+    "-fsanitize=leak"
+    "-fsanitize=bounds"
+    "-fsanitize=float-cast-overflow"
+    "-fsanitize=enum"
+)
+set(COVERAGE_COMPILE_OPTIONS
+    "-fprofile-arcs"
+    "-ftest-coverage"
+    "-fno-inline"
+    "--coverage"
+)
+set(COVERAGE_LINKING_OPTIONS
+    "-lgcov"
+    "--coverage"
+)

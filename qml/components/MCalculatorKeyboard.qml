@@ -1,15 +1,16 @@
 import QtQuick
 import QtQuick.Layouts
 
-import Style
+import Morph.Style
+import Morph.Components
 
 ColumnLayout {
     id: root
 
     spacing: 15
 
-    property int cellWidth: MStyle.size.largeItem
-    property int cellHeight: MStyle.size.largeItem
+    property int cellWidth: Style.size.largeItem
+    property int cellHeight: Style.size.largeItem
 
     RowLayout {
         spacing: 15
@@ -23,13 +24,13 @@ ColumnLayout {
         MAbstractButton {
             width: root.cellWidth
             height: root.cellHeight
-            imageSource: MStyle.image.carretRightSvg
+            imageSource: Style.image.carretRightSvg
         }
 
         MAbstractButton {
             width: root.cellWidth
             height: root.cellHeight
-            imageSource: MStyle.image.backspaceSvg
+            imageSource: Style.image.backspaceSvg
         }
 
         MAbstractButton {

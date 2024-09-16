@@ -1,15 +1,16 @@
 import QtQuick
 
-import Style
+import Morph.Style
+import Morph.Components
 
 Item {
     id: root
 
-    property real elevation: MStyle.shadow.elevation
-    property real lightOpacity: MStyle.shadow.onAccentLightOpacity
-    property real shadowOpacity: MStyle.shadow.onAccentShadowOpacity
-    property color color: MStyle.color.accentColor
-    property int radius: MStyle.button.radius
+    property real elevation: Style.shadow.elevation
+    property real lightOpacity: Style.shadow.onAccentLightOpacity
+    property real shadowOpacity: Style.shadow.onAccentShadowOpacity
+    property color color: Style.color.accentColor
+    property int radius: Style.button.radius
 
     Rectangle {
         id: body

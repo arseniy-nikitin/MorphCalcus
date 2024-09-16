@@ -10,9 +10,8 @@ list(APPEND MODULE_QML_FILES
 )
 
 qt_add_qml_module(Pages
-    URI Pages
+    URI Morph.Pages
     VERSION 1.0
     RESOURCE_PREFIX /arseniy.nikitin/imports
-    QML_FILES
-        ${MODULE_QML_FILES}
+    QML_FILES ${MODULE_QML_FILES}
 )

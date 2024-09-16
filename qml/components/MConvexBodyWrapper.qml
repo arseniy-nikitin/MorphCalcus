@@ -1,15 +1,16 @@
 import QtQuick
 
-import Style
+import Morph.Style
+import Morph.Components
 
 Item {
     id: root
 
-    property real elevation: MStyle.shadow.elevation
-    property real lightOpacity: MStyle.shadow.onPrimaryLightOpacity
-    property real shadowOpacity: MStyle.shadow.onPrimaryShadowOpacity
-    property color color: MStyle.color.primaryColor
-    property int radius: MStyle.button.radius
+    property real elevation: Style.shadow.elevation
+    property real lightOpacity: Style.shadow.onPrimaryLightOpacity
+    property real shadowOpacity: Style.shadow.onPrimaryShadowOpacity
+    property color color: Style.color.primaryColor
+    property int radius: Style.button.radius
 
     MVolumetricDropShadow {
         id: shadow

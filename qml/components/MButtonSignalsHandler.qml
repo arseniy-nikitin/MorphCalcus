@@ -1,7 +1,5 @@
 import QtQuick
 
-import Style
-
 Item {
     id: root
 

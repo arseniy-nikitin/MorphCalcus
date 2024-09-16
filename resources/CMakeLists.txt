@@ -1,9 +1,8 @@
-qt_add_library(Style STATIC)
+qt_add_library(Resources STATIC)
 
-set_target_properties(Style PROPERTIES AUTOMOC ON)
-target_link_libraries(Style PRIVATE Qt6::Quick)
+set_target_properties(Resources PROPERTIES AUTOMOC ON)
+target_link_libraries(Resources PRIVATE Qt6::Quick)
 
-list(APPEND MODULE_QML_FILES MStyle.qml)
 list(APPEND MODULE_RESOURCES
     fonts/Nunito-Bold.ttf
     fonts/Nunito-ExtraBold.ttf
@@ -19,16 +18,10 @@ list(APPEND MODULE_RESOURCES
     images/BalanceRefreshFreqYear.svg
 )
 
-set_source_files_properties(${MODULE_QML_FILES} PROPERTIES
-    QT_QML_SINGLETON_TYPE  TRUE
-)
-
-qt_add_qml_module(Style
-    URI Style
+qt_add_qml_module(Resources
+    URI Resources
     VERSION 1.0
     RESOURCE_PREFIX /arseniy.nikitin/imports
-    QML_FILES
-        ${MODULE_QML_FILES}
     RESOURCES
         ${MODULE_RESOURCES}
 )

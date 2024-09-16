@@ -1,37 +1,38 @@
 import QtQuick
 import QtQuick.Layouts
 
-import Style
+import Morph.Style
+import Morph.Components
 
 MConcaveBodyWrapper {
     id: root
 
     // Shadow properties
-    property real shadowElevation: MStyle.shadow.elevation
-    property real lightOpacity: MStyle.shadow.onAccentLightOpacity
-    property real shadowOpacity: MStyle.shadow.onAccentShadowOpacity
+    property real shadowElevation: Style.shadow.elevation
+    property real lightOpacity: Style.shadow.onAccentLightOpacity
+    property real shadowOpacity: Style.shadow.onAccentShadowOpacity
 
     // Body properties
-    // property color color: MStyle.color.primaryColor
-    // property int radius: MStyle.button.radius
+    // property color color: Style.color.primaryColor
+    // property int radius: Style.button.radius
 
     // Image properties
     property string imageSource: ""
 
     // Title properties
     property string titleText: ""
-    property color titleFontColor: MStyle.color.primaryColor
-    property int titlePixelSize: MStyle.size.mediumTitle
+    property color titleFontColor: Style.color.primaryColor
+    property int titlePixelSize: Style.size.mediumTitle
 
     // Subtitle properties
     property string subtitleText: ""
-    property color subtitleFontColor: MStyle.color.primaryColor
-    property int subtitlePixelSize: MStyle.size.subtitle
+    property color subtitleFontColor: Style.color.primaryColor
+    property int subtitlePixelSize: Style.size.subtitle
 
     // Content properties
     property string text: ""
-    property color fontColor: MStyle.color.primaryColor
-    property int pixelSize: MStyle.size.mediumTitle
+    property color fontColor: Style.color.primaryColor
+    property int pixelSize: Style.size.mediumTitle
 
     signal clicked()
 
@@ -45,7 +46,7 @@ MConcaveBodyWrapper {
             Layout.leftMargin: root.height * 0.25
             text: root.text
             color: root.fontColor
-            fontFamily: MStyle.font.nunitoBold
+            fontFamily: Style.font.nunitoBold
             pixelSize: root.pixelSize
         }
 
@@ -63,7 +64,7 @@ MConcaveBodyWrapper {
                 Layout.preferredWidth: root.height
                 text: root.titleText
                 color: root.titleFontColor
-                fontFamily: MStyle.font.nunitoBold
+                fontFamily: Style.font.nunitoBold
                 pixelSize: root.titlePixelSize
             }
 
@@ -72,7 +73,7 @@ MConcaveBodyWrapper {
                 Layout.preferredWidth: root.height
                 text: root.subtitleText
                 color: root.subtitleFontColor
-                fontFamily: MStyle.font.nunitoBold
+                fontFamily: Style.font.nunitoBold
                 pixelSize: root.subtitlePixelSize
             }
         }

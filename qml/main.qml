@@ -1,9 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 
-import Pages
-import Components
-import Style
+import Morph.Pages
+import Morph.Components
 
 Window {
     id: root

@@ -1,15 +1,15 @@
 import QtQuick
 
-import Style
+import Morph.Style
 
 Item {
     id: root
 
     property string text: ""
     property bool clip: true
-    property color color: MStyle.color.accentColor
-    property int pixelSize: MStyle.size.largeTitle
-    property string fontFamily: MStyle.font.nunitoBold
+    property color color: Style.color.accentColor
+    property int pixelSize: Style.size.largeTitle
+    property string fontFamily: Style.font.nunitoBold
 
     height: pixelSize
     visible: text !== ""

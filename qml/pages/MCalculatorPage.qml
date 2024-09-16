@@ -1,12 +1,12 @@
 import QtQuick
 import QtQuick.Layouts
 
-import Components
-import Style
+import Morph.Style
+import Morph.Components
 
 Rectangle {
     id: root
-    color: MStyle.color.primaryColor
+    color: Style.color.primaryColor
     radius: 12
 
     // Make wrapper from container and layout

@@ -15,4 +15,5 @@ qt_add_qml_module(Models
         debitmodel.hh debitmodel.cc
         debitfacade.hh debitfacade.cc
         transactionmodel.hh transactionmodel.cc
+        datestring.hh
 )
