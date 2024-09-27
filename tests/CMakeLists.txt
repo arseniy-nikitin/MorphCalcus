@@ -20,7 +20,8 @@ if(SANITIZER_ENABLE)
 endif()
 
 set(TEST_FILES
-    test_datestring.cc
+    test_date_input_field.cc
+    test_integer_input_field.cc
 )
 
 if(TESTING_ENABLE)
@@ -34,7 +35,7 @@ if(TESTING_ENABLE)
                     "${CMAKE_SOURCE_DIR}/external"
                     "${PROJECT_BINARY_DIR}"
                 EXECUTABLE ${TEST_FILE}
-                INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src"
+                INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include"
                 COMPILE_OPTIONS ${TEST_COMPILE_OPTIONS}
                 LINKING_OPTIONS ${TEST_LINKING_OPTIONS}
                 LINKED_LIBS
@@ -49,7 +50,7 @@ if(TESTING_ENABLE)
             get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
             create_test_suite(${TEST_NAME}
                 EXECUTABLE ${TEST_FILE}
-                INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src"
+                INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include"
                 COMPILE_OPTIONS ${TEST_COMPILE_OPTIONS}
                 LINKING_OPTIONS ${TEST_LINKING_OPTIONS}
                 LINKED_LIBS

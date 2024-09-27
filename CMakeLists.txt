@@ -10,6 +10,8 @@ find_package(Qt6 6.5 COMPONENTS Quick REQUIRED)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(BuildOptions)
 
+include_directories(include)
+
 option(TESTING_ENABLE ON)
 option(COVERAGE_ENABLE OFF)
 option(SANITIZERS_ENABLE OFF)
@@ -58,6 +60,7 @@ target_link_libraries(appMorphCalcus PRIVATE
     Componentsplugin
     Pagesplugin
     Resourcesplugin
+    Morph::Core
 )
 
 set_target_properties(appMorphCalcus PROPERTIES

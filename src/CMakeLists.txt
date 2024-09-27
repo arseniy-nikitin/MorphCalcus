@@ -1,19 +1,16 @@
-qt_add_library(Models STATIC)
+qt_add_library(Morph::Core STATIC)
 
-set_target_properties(Models PROPERTIES AUTOMOC ON)
-target_link_libraries(Models PRIVATE Qt6::Quick)
+set_target_properties(Morph::Core PROPERTIES AUTOMOC ON)
+target_link_libraries(Morph::Core PRIVATE Qt6::Quick)
 
-qt_add_qml_module(Models
-    URI Models
+add_subdirectory(input_field)
+add_subdirectory(page)
+
+qt_add_qml_module(Morph::Core
+    URI Morph.Core
     VERSION 1.0
     RESOURCE_PREFIX /arseniy.nikitin/imports
     SOURCES
-        calculatormodel.hh calculatormodel.cc
-        calculatorfacade.hh calculatorfacade.cc
-        creditmodel.hh creditmodel.cc
-        creditfacade.hh creditfacade.cc
-        debitmodel.hh debitmodel.cc
-        debitfacade.hh debitfacade.cc
-        transactionmodel.hh transactionmodel.cc
-        datestring.hh
+        models/input_field/date_input_field.cc
+        models/input_field/integer_input_field.cc
 )
